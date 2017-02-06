@@ -27,6 +27,21 @@ class CaffeineTest < MiniTest::Test
     refute tsmf.empty?
   end
 
+  def test_expresso
+
+    sherri = Human.new "Sherri"
+    tsmf = Coffee.new "Triple Shot Mocha Frappuccino"
+    assert tsmf.full?
+    sherri.buy tsmf
+    sherri.drink!
+    
+    chris = Human.new "Chris"
+    express = Coffee.new("Expresso",true,0.3,0.4)
+    chris.buy express
+    chris.drink!
+    assert chris.alertness > sherri.alertness
+  end
+
   def test_humans_can_drink_all_the_coffee
     trevor = Human.new "Trevor"
     tsmf = Coffee.new "Triple Shot Mocha Frappuccino"
