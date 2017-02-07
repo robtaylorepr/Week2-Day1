@@ -2,6 +2,7 @@ require 'minitest/autorun'
 
 require './human'
 require './coffee'
+require './tea'
 
 class CaffeineTest < MiniTest::Test
   def test_humans_tend_to_be_sleepy
@@ -28,13 +29,12 @@ class CaffeineTest < MiniTest::Test
   end
 
   def test_expresso
-
     sherri = Human.new "Sherri"
     tsmf = Coffee.new "Triple Shot Mocha Frappuccino"
     assert tsmf.full?
     sherri.buy tsmf
     sherri.drink!
-    
+
     chris = Human.new "Chris"
     express = Coffee.new("Expresso",true,0.3,0.4)
     chris.buy express
@@ -50,5 +50,19 @@ class CaffeineTest < MiniTest::Test
     3.times { trevor.drink! }
     assert tsmf.empty?
     assert trevor.alertness > 0.9
+  end
+end
+
+class TeaTest < MiniTest::Test
+  def test_humans_tend_to_be_sleepy
+    tyler = Human.new "Tyler"
+    assert tyler.alertness < 0.1
+  end
+  def test_teas_effectiveness
+    eric = Human.new "Eric"
+    rose_tea = Tea.new "Rose"
+    eric.buy rose_tea
+    eric.drink!
+    assert eric.alertness > 0.01
   end
 end
